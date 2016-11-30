@@ -8,7 +8,7 @@ import java.util.Date;
 public class Event {
 
     // fields
-    EventType eventType;
+    Category category;
     String title;
     String description;
     String location; // TODO: How are Google Map API locations stored?
@@ -20,13 +20,13 @@ public class Event {
     int currAttendance;
 
 
-    public enum EventType {
+    public enum Category {
         SPORT, STUDY, SOCIAL, CLUB
     }
 
-    public Event(EventType eventType, String title, String description, String location,
+    public Event(Category category, String title, String description, String location,
                  Date startTime, Date endTime, int maxAttendance) {
-        this.eventType = eventType;
+        this.category = category;
         this.title = title;
         this.description = description;
         this.location = location;
