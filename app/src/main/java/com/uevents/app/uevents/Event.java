@@ -33,7 +33,7 @@ public class Event {
         this.startTime = startTime;
         this.endTime = endTime;
         this.maxAttendance = maxAttendance;
-        this.currAttendance = 0; // TODO: Should the default attendance be 1? Do we assume the creator is attending?
+        this.currAttendance = 1; // Assumption: the event creator is attending
     }
 
     /**

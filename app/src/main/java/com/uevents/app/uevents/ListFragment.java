@@ -22,15 +22,15 @@ public class ListFragment extends Fragment {
 
     private Event[] prepopulatedEvents = {
             new Event(Event.Category.SPORT, "Ultimate Frisbee", "Casual game of ultimate. Weather's nice.", "McKeldin Mall", new Date(), new Date(), 12),
+            new Event(Event.Category.SOCIAL, "Human Jenga", "Human jenga - who's in?", "Eppley", new Date(), new Date(), 15),
+            new Event(Event.Category.STUDY, "CHEM231 PSet #1", "Houck's orgo problem set.", "Engineering Library", new Date(), new Date(), 10),
+            new Event(Event.Category.CLUB, "AMSA GBM #3", "Come listen to our guest speaker from NIH.", "JMZ0205", new Date(), new Date(), 40),
+            new Event(Event.Category.SPORT, "Soccer", "Who wants to play some soccer?", "Field", new Date(), new Date(), 10),
             new Event(Event.Category.SPORT, "Ultimate Frisbee", "Casual game of ultimate. Weather's nice.", "McKeldin Mall", new Date(), new Date(), 12),
-            new Event(Event.Category.SPORT, "Ultimate Frisbee", "Casual game of ultimate. Weather's nice.", "McKeldin Mall", new Date(), new Date(), 12),
-            new Event(Event.Category.SPORT, "Ultimate Frisbee", "Casual game of ultimate. Weather's nice.", "McKeldin Mall", new Date(), new Date(), 12),
-            new Event(Event.Category.SPORT, "Ultimate Frisbee", "Casual game of ultimate. Weather's nice.", "McKeldin Mall", new Date(), new Date(), 12),
-            new Event(Event.Category.SPORT, "Ultimate Frisbee", "Casual game of ultimate. Weather's nice.", "McKeldin Mall", new Date(), new Date(), 12),
-            new Event(Event.Category.SPORT, "Ultimate Frisbee", "Casual game of ultimate. Weather's nice.", "McKeldin Mall", new Date(), new Date(), 12),
-            new Event(Event.Category.SPORT, "Ultimate Frisbee", "Casual game of ultimate. Weather's nice.", "McKeldin Mall", new Date(), new Date(), 12),
-            new Event(Event.Category.SPORT, "Ultimate Frisbee", "Casual game of ultimate. Weather's nice.", "McKeldin Mall", new Date(), new Date(), 12),
-            new Event(Event.Category.SPORT, "Ultimate Frisbee", "Casual game of ultimate. Weather's nice.", "McKeldin Mall", new Date(), new Date(), 12)
+            new Event(Event.Category.SOCIAL, "Human Jenga", "Human jenga - who's in?", "Eppley", new Date(), new Date(), 15),
+            new Event(Event.Category.STUDY, "CHEM231 PSet #1", "Houck's orgo problem set.", "Engineering Library", new Date(), new Date(), 10),
+            new Event(Event.Category.CLUB, "AMSA GBM #3", "Come listen to our guest speaker from NIH.", "JMZ0205", new Date(), new Date(), 40),
+            new Event(Event.Category.SPORT, "Soccer", "Who wants to play some soccer?", "Field", new Date(), new Date(), 10),
     };
 
     @Override
