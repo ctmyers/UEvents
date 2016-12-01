@@ -5,6 +5,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -17,10 +18,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         // sets the action bar to be pretty
-        getSupportActionBar().setElevation(0);
-        //getSupportActionBar().setDisplayShowHomeEnabled(true);     // shows the logo
-        //getSupportActionBar().setIcon(R.drawable.uevents_logo);   // sets the icon to be the logo
-        //getSupportActionBar().setDisplayShowTitleEnabled(false); // remove the default text "Doodling"
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setElevation(0);
+        getSupportActionBar().setDisplayShowTitleEnabled(false); // remove the default text "Doodling"
 
         // sets up the tabs
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
