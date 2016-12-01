@@ -21,16 +21,16 @@ public class ListFragment extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
 
     private Event[] prepopulatedEvents = {
-            new Event(Event.Category.SPORT, "Ultimate Frisbee", "Casual game of ultimate. Weather's nice.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 12),
-            new Event(Event.Category.SOCIAL, "Human Jenga", "Human jenga - who's in?", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 15),
-            new Event(Event.Category.STUDY, "CHEM231 PSet #1", "Houck's orgo problem set.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 10),
-            new Event(Event.Category.CLUB, "AMSA GBM #3", "Come listen to our guest speaker from NIH.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 40),
-            new Event(Event.Category.SPORT, "Soccer", "Who wants to play some soccer?", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 10),
-            new Event(Event.Category.SPORT, "Ultimate Frisbee", "Casual game of ultimate. Weather's nice.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 12),
-            new Event(Event.Category.SOCIAL, "Human Jenga", "Human jenga - who's in?", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 15),
-            new Event(Event.Category.STUDY, "CHEM231 PSet #1", "Houck's orgo problem set.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 10),
-            new Event(Event.Category.CLUB, "AMSA GBM #3", "Come listen to our guest speaker from NIH.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 40),
-            new Event(Event.Category.SPORT, "Soccer", "Who wants to play some soccer?", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 10),
+            new Event(Event.Category.SPORT, "Ultimate Frisbee", "Casual game of ultimate. Weather's nice. Open to all levels.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 12, "JoeShmoe"),
+            new Event(Event.Category.SOCIAL, "Human Jenga", "Human jenga - who's in?", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 15, "RebeccaHe"),
+            new Event(Event.Category.STUDY, "CHEM231 PSet #1", "Houck's orgo problem set. Really hard, stuck on last page.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 10, "DanielCha"),
+            new Event(Event.Category.CLUB, "AMSA GBM #3", "Come listen to our guest speaker from NIH.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 40, "CarsonMyers"),
+            new Event(Event.Category.SPORT, "Soccer", "Who wants to play some soccer? It's a nice day outside.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 10, "AndreaSoto"),
+            new Event(Event.Category.SPORT, "Ultimate Frisbee", "Casual game of ultimate. Weather's nice. Open to all levels.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 12, "JoeShmoe"),
+            new Event(Event.Category.SOCIAL, "Human Jenga", "Human jenga - who's in?", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 15, "RebeccaHe"),
+            new Event(Event.Category.STUDY, "CHEM231 PSet #1", "Houck's orgo problem set. Really hard, stuck on last page.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 10, "DanielCha"),
+            new Event(Event.Category.CLUB, "AMSA GBM #3", "Come listen to our guest speaker from NIH.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 40, "CarsonMyers"),
+            new Event(Event.Category.SPORT, "Soccer", "Who wants to play some soccer? It's a nice day outside.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 10, "AndreaSoto"),
     };
 
     @Override

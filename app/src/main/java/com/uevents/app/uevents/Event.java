@@ -20,13 +20,15 @@ public class Event {
     int maxAttendance;
     int currAttendance;
 
+    String creator;
+
 
     public enum Category {
         SPORT, STUDY, SOCIAL, CLUB
     }
 
     public Event(Category category, String title, String description, float lat, float lon,
-                 Calendar startTime, Calendar endTime, int maxAttendance) {
+                 Calendar startTime, Calendar endTime, int maxAttendance, String creator) {
         this.category = category;
         this.title = title;
         this.description = description;
@@ -36,6 +38,7 @@ public class Event {
         this.endTime = endTime;
         this.maxAttendance = maxAttendance;
         this.currAttendance = 1; // Assumption: the event creator is attending
+        this.creator = creator;
     }
 
     /**

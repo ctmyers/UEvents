@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">UEvents</string>
     <string name="title_activity_list_view_event">ListViewEventActivity</string>
+
+    <string name="btn_going">GOING</string>
+    <string name="btn_not_going">NOT GOING</string>
+    <string name="btn_share">SHARE</string>
 </resources>

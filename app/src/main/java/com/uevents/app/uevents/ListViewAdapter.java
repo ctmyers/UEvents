@@ -92,6 +92,7 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
                 bundle.putLong("endTime", event.startTime.getTimeInMillis());
                 bundle.putInt("maxAttendance", event.maxAttendance);
                 bundle.putInt("currAttendance", event.currAttendance);
+                bundle.putString("creator", event.creator);
 
                 Intent intent = new Intent(context, ListViewEventActivity.class);
                 intent.putExtras(bundle);
