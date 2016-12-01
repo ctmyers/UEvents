@@ -14,11 +14,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().setElevation(0);
 
+
+        // sets the action bar to be pretty
+        getSupportActionBar().setElevation(0);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);     // shows the logo
+        getSupportActionBar().setIcon(R.drawable.uevents_logo);   // sets the icon to be the logo
+        getSupportActionBar().setDisplayShowTitleEnabled(false); // remove the default text "Doodling"
+
+        // sets up the tabs
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("Map"));
-        tabLayout.addTab(tabLayout.newTab().setText("List"));
+        tabLayout.addTab(tabLayout.newTab().setText("Near By").setIcon(R.drawable.map));
+        tabLayout.addTab(tabLayout.newTab().setText("Happening Now").setIcon(R.drawable.list));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
