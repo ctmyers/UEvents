@@ -1,6 +1,6 @@
 package com.uevents.app.uevents;
 
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  * Created by rebeccahe on 11/30/16.
@@ -11,10 +11,11 @@ public class Event {
     Category category;
     String title;
     String description;
-    String location; // TODO: How are Google Map API locations stored?
+    float lat;
+    float lon;
 
-    Date startTime;
-    Date endTime;
+    Calendar startTime;
+    Calendar endTime;
 
     int maxAttendance;
     int currAttendance;
@@ -24,12 +25,13 @@ public class Event {
         SPORT, STUDY, SOCIAL, CLUB
     }
 
-    public Event(Category category, String title, String description, String location,
-                 Date startTime, Date endTime, int maxAttendance) {
+    public Event(Category category, String title, String description, float lat, float lon,
+                 Calendar startTime, Calendar endTime, int maxAttendance) {
         this.category = category;
         this.title = title;
         this.description = description;
-        this.location = location;
+        this.lat = lat;
+        this.lon = lon;
         this.startTime = startTime;
         this.endTime = endTime;
         this.maxAttendance = maxAttendance;
