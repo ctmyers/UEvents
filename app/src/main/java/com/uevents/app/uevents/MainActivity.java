@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         // sets up the tabs
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("Near By").setIcon(R.drawable.map));
+        tabLayout.addTab(tabLayout.newTab().setText("Nearby").setIcon(R.drawable.map));
         tabLayout.addTab(tabLayout.newTab().setText("Happening Now").setIcon(R.drawable.list));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
