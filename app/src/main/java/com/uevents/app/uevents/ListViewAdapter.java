@@ -1,8 +1,12 @@
 package com.uevents.app.uevents;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,6 +18,7 @@ import android.widget.TextView;
 public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHolder> {
 
     private Event[] dataset;
+    private Context context;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // Each event item stored in a card
@@ -29,8 +34,9 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
      *
      * @param dataset
      */
-    public ListViewAdapter(Event[] dataset) {
+    public ListViewAdapter(Event[] dataset, Context context) {
         this.dataset = dataset;
+        this.context = context;
     }
 
     /**
@@ -57,7 +63,7 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
      */
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Event event = dataset[position];
+        final Event event = dataset[position];
         TextView title = (TextView) holder.cardView.findViewById(R.id.list_item_title);
         TextView attendance = (TextView) holder.cardView.findViewById(R.id.list_item_attendance);
         ImageView icon = (ImageView) holder.cardView.findViewById(R.id.list_item_icon);
@@ -72,6 +78,26 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
         }
         // TODO: Time - Assume within boundary? Start/End v. how much longer?
         // TODO: Location - Find distance from current location using Google Maps API?
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("category", event.category.name()); // decode using Event.Category.valueOf(s)
+                bundle.putString("title", event.title);
+                bundle.putString("description", event.description);
+                bundle.putFloat("lat", event.lat);
+                bundle.putFloat("lon", event.lon);
+                bundle.putLong("startTime", event.startTime.getTimeInMillis());
+                bundle.putLong("endTime", event.startTime.getTimeInMillis());
+                bundle.putInt("maxAttendance", event.maxAttendance);
+                bundle.putInt("currAttendance", event.currAttendance);
+
+                Intent intent = new Intent(context, ListViewEventActivity.class);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
+            }
+        });
     }
 
     /**
