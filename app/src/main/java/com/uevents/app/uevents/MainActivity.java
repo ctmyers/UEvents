@@ -18,9 +18,9 @@ public class MainActivity extends AppCompatActivity {
 
         // sets the action bar to be pretty
         getSupportActionBar().setElevation(0);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);     // shows the logo
-        getSupportActionBar().setIcon(R.drawable.uevents_logo);   // sets the icon to be the logo
-        getSupportActionBar().setDisplayShowTitleEnabled(false); // remove the default text "Doodling"
+        //getSupportActionBar().setDisplayShowHomeEnabled(true);     // shows the logo
+        //getSupportActionBar().setIcon(R.drawable.uevents_logo);   // sets the icon to be the logo
+        //getSupportActionBar().setDisplayShowTitleEnabled(false); // remove the default text "Doodling"
 
         // sets up the tabs
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
