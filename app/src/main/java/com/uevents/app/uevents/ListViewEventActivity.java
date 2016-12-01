@@ -19,6 +19,7 @@ public class ListViewEventActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         // Back button on toolbar
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

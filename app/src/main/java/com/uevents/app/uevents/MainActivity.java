@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setElevation(0);
-        getSupportActionBar().setDisplayShowTitleEnabled(false); // remove the default text "Doodling"
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         // sets up the tabs
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
