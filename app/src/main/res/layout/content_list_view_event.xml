@@ -15,7 +15,7 @@
         android:id="@+id/map"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_weight="4"
         android:scaleType="centerCrop"
         android:src="@drawable/map_example">
     </ImageView>
@@ -62,7 +62,8 @@
             android:textColor="@color/colorTextPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"/>
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/icon" />
 
     </RelativeLayout>
 
@@ -71,8 +72,8 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp">
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
 
         <Button
             android:id="@+id/btn_going"
@@ -110,8 +111,44 @@
         android:layout_height="0dp"
         android:layout_weight="3"
         android:orientation="vertical"
-        android:background="@color/colorPrimaryDark">
+        android:padding="20dp">
 
+        <TextView
+            android:id="@+id/time"
+            android:text="Fri Dec 2 at 3 PM - 5 PM"
+            android:textSize="18dp"
+            android:textColor="@color/colorTextPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"/>
+
+        <TextView
+            android:id="@+id/time_info"
+            android:text="Ends in 1.2 hours"
+            android:textSize="18dp"
+            android:textColor="@color/colorTextSecondary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_below="@id/time"/>
+
+        <TextView
+            android:id="@+id/attendance"
+            android:text="8 out of 12 people attending"
+            android:textSize="18dp"
+            android:textColor="@color/colorTextPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/time_info"/>
+
+        <TextView
+            android:id="@+id/attendance_info"
+            android:text="4 spots left"
+            android:textSize="18dp"
+            android:textColor="@color/colorTextSecondary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/attendance"/>
 
     </LinearLayout>
 
