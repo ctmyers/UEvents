@@ -1,5 +1,6 @@
 package com.uevents.app.uevents;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 
 import android.support.v4.view.ViewPager;
@@ -8,8 +9,12 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
+
+    private ImageView mSearchButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,16 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Nearby").setIcon(R.drawable.map));
         tabLayout.addTab(tabLayout.newTab().setText("Happening Now").setIcon(R.drawable.list));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+        // Attach an onClickListener to the imageView to start the search activity
+        mSearchButton = (ImageView) findViewById(R.id.searchButton);
+        mSearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                startActivity(intent);
+            }
+        });
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());

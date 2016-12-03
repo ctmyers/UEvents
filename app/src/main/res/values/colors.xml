@@ -14,4 +14,7 @@
     <color name="colorIconSocial">#FFD966</color>
     <color name="colorIconStudy">#93C47D</color>
 
+    <color name="colorImageFilterBackgroundUnseclected">#03000000</color>
+    <color name="colorImageFilterBackgroundSeclected">#d1d1d1</color>
+
 </resources>
