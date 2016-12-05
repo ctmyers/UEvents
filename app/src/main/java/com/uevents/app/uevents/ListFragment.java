@@ -1,12 +1,14 @@
 package com.uevents.app.uevents;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -19,6 +21,8 @@ public class ListFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+    public FloatingActionButton myfab;
+    Toast toast;
 
     private Event[] prepopulatedEvents = {
             new Event(Event.Category.SPORT, "Ultimate Frisbee", "Casual game of ultimate. Weather's nice. Open to all levels.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 12, "JoeShmoe"),
@@ -46,6 +50,13 @@ public class ListFragment extends Fragment {
         layoutManager = new LinearLayoutManager(container.getContext());
         recyclerView.setLayoutManager(layoutManager);
 
+        myfab = (FloatingActionButton) fragmentView.findViewById(R.id.fab);
+        myfab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(),"Hello!",Toast.LENGTH_SHORT).show();
+            }
+        });
         return fragmentView;
     }
 
