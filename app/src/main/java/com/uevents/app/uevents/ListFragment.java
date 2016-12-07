@@ -1,5 +1,6 @@
 package com.uevents.app.uevents;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by Daniel on 11/29/16.
@@ -54,7 +56,9 @@ public class ListFragment extends Fragment {
         myfab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(),"Hello!",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(),"Hello!",Toast.LENGTH_SHORT).show();
+                Intent createEvent = new Intent(getActivity(), CreateEventActivity.class);
+                startActivity(createEvent);
             }
         });
         return fragmentView;
