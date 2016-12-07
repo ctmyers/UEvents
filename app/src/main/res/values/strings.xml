@@ -11,4 +11,11 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string-array name="categories_array">
+        <item>Clubs</item>
+        <item>Social</item>
+        <item>Sports</item>
+        <item>Study</item>
+    </string-array>
 </resources>
