@@ -1,6 +1,8 @@
 package com.uevents.app.uevents;
 
+import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -106,6 +108,13 @@ public class CreateEventActivity extends AppCompatActivity implements
 
 
     public void onSaveButtonClick(View v) {
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("Title",eventNameEditText.getText().toString());
+        EditText eventDes = (EditText)findViewById(R.id.eventDescription);
+        returnIntent.putExtra("Description",eventDes.getText().toString());
+        returnIntent.putExtra("Description",eventDes.getText().toString());
+
+        setResult(Activity.RESULT_OK,returnIntent);
         finish();
         Toast.makeText(this,"Your event was created!",Toast.LENGTH_LONG).show();
     }

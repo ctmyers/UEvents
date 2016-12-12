@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private ImageView mSearchButton;
+    public FloatingActionButton myfab;
+
 
 
     @Override
@@ -73,6 +75,16 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
 
+            }
+        });
+
+        myfab = (FloatingActionButton) findViewById(R.id.fab);
+        myfab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(getActivity(),"Hello!",Toast.LENGTH_SHORT).show();
+                Intent createEvent = new Intent(MainActivity.this, CreateEventActivity.class);
+                startActivity(createEvent);
             }
         });
     }

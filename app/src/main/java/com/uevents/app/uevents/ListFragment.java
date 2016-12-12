@@ -23,7 +23,6 @@ public class ListFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    public FloatingActionButton myfab;
     Toast toast;
 
     private Event[] prepopulatedEvents = {
@@ -52,15 +51,7 @@ public class ListFragment extends Fragment {
         layoutManager = new LinearLayoutManager(container.getContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        myfab = (FloatingActionButton) fragmentView.findViewById(R.id.fab);
-        myfab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Toast.makeText(getActivity(),"Hello!",Toast.LENGTH_SHORT).show();
-                Intent createEvent = new Intent(getActivity(), CreateEventActivity.class);
-                startActivity(createEvent);
-            }
-        });
+
         return fragmentView;
     }
 
