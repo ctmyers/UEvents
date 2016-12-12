@@ -13,6 +13,7 @@
     <string name="action_settings">Settings</string>
 
     <string-array name="categories_array">
+        <item>- Select One -</item>
         <item>Clubs</item>
         <item>Social</item>
         <item>Sports</item>
