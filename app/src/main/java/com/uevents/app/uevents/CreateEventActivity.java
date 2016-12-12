@@ -23,6 +23,7 @@ import java.util.Locale;
 
 /**
  * Created by Andrea on 12/5/2016.
+ * https://github.com/CiTuX/datetimepicker
  */
 
 public class CreateEventActivity extends AppCompatActivity implements
@@ -90,14 +91,16 @@ public class CreateEventActivity extends AppCompatActivity implements
     @Override
     public void onDateSet(DatePickerDialog dialog, int year, int monthOfYear, int dayOfMonth) {
         calendar.set(year, monthOfYear, dayOfMonth);
-        update();
+        //update();
+        dateTextView.setText(dateTextView.getText() + dateFormat.format(calendar.getTime()));
     }
 
     @Override
     public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
         calendar.set(Calendar.MINUTE, minute);
-        update();
+        //update();
+        timeTextView.setText(timeTextView.getText() + timeFormat.format(calendar.getTime()));
     }
 
 
