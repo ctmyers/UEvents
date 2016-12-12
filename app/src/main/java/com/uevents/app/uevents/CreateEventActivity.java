@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.datetimepicker.date.DatePickerDialog;
 import com.android.datetimepicker.time.RadialPickerLayout;
@@ -106,6 +107,7 @@ public class CreateEventActivity extends AppCompatActivity implements
 
     public void onSaveButtonClick(View v) {
         finish();
+        Toast.makeText(this,"Your event was created!",Toast.LENGTH_LONG).show();
     }
 
     /*eventNameEditText.setOnFocusChangeListener(new View.OnFocusChangeListener(){
