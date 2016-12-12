@@ -70,7 +70,8 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="true">
 
 
         <EditText
@@ -83,7 +84,8 @@
             android:paddingLeft="5dp"
             android:paddingTop="30dp"
             android:layout_gravity="center"
-            />
+            android:backgroundTint="@color/line_background"
+            android:textColorHint="@drawable/selector"/>
 
         <EditText
             android:layout_width="310dp"
@@ -94,7 +96,9 @@
             android:id="@+id/eventDescription"
             android:paddingLeft="5dp"
             android:paddingTop="10dp"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:backgroundTint="@color/line_background"
+            android:textColorHint="@drawable/selector"/>
 
         <TextView
             android:id="@+id/dateTextView"
@@ -143,7 +147,6 @@
         </LinearLayout>
 
         <Spinner
-
             android:layout_width="310dp"
             android:layout_height="wrap_content"
             android:id="@+id/categorySpinner"
@@ -160,18 +163,23 @@
             android:ems="10"
             android:id="@+id/maxAttendees"
             android:paddingLeft="5dp"
-            android:paddingTop="10dp"/>
+            android:paddingTop="10dp"
+            android:backgroundTint="@color/line_background"
+            android:textColorHint="@drawable/selector"/>
 
         <EditText
             android:layout_gravity="center"
             android:layout_width="310dp"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
+            android:drawableLeft="@drawable/map_marker"
             android:hint="Add Location"
             android:ems="10"
             android:id="@+id/addEventLocation"
             android:paddingLeft="5dp"
-            android:paddingTop="12dp"/>
+            android:paddingTop="12dp"
+            android:backgroundTint="@color/line_background"
+            android:textColorHint="@drawable/selector"/>
 
     </LinearLayout>
 
