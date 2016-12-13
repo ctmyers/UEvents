@@ -42,8 +42,6 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        loadEvents(); // loads the prewritten events to the EventList
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -173,24 +171,11 @@ public class MainActivity extends AppCompatActivity
                     case "Study": c = Event.Category.STUDY;
                         break;
                 }
-                EventList.addEvent(new Event(c,title,description,lat,lon,start,end,Integer.parseInt(attendees),"DanielCha"));
+                EventList.createdEvent(new Event(c,title,description,lat,lon,start,end,Integer.parseInt(attendees),"DanielCha"));
                 adapter.update();
 
             }
 
         }
-    }
-
-    private void loadEvents(){
-        EventList.addEvent(new Event(Event.Category.SPORT, "Ultimate Frisbee", "Casual game of ultimate. Weather's nice. Open to all levels.", 38.987951f, -76.937650f, Calendar.getInstance(), Calendar.getInstance(), 12, "JoeShmoe"));
-        EventList.addEvent(new Event(Event.Category.SOCIAL, "Human Jenga", "Human jenga - who's in?", 38.990182f, -76.937247f, Calendar.getInstance(), Calendar.getInstance(), 15, "RebeccaHe"));
-        EventList.addEvent(new Event(Event.Category.STUDY, "CHEM231 PSet #1", "Houck's orgo problem set. Really hard, stuck on last page.", 38.990845f, -76.938325f, Calendar.getInstance(), Calendar.getInstance(), 10, "DanielCha"));
-        EventList.addEvent(new Event(Event.Category.CLUB, "AMSA GBM #3", "Come listen to our guest speaker from NIH.", 38.9903619f, -76.9400295f, Calendar.getInstance(), Calendar.getInstance(), 40, "CarsonMyers"));
-        EventList.addEvent(new Event(Event.Category.SPORT, "Soccer", "Who wants to play some soccer? It's a nice day outside.", 38.9882058f, -76.9402019f, Calendar.getInstance(), Calendar.getInstance(), 10, "AndreaSoto"));
-        EventList.addEvent(new Event(Event.Category.SPORT, "Football", "Casual game of touch football. Weather's nice. Open to all levels.", 38.987951f, -76.937650f, Calendar.getInstance(), Calendar.getInstance(), 12, "JoeShmoe"));
-        EventList.addEvent(new Event(Event.Category.SOCIAL, "Human chess", "come be my menions", 38.990182f, -76.937247f, Calendar.getInstance(), Calendar.getInstance(), 15, "RebeccaHe"));
-        EventList.addEvent(new Event(Event.Category.STUDY, "CMSC434 IA05", "Let's work on this together", 38.990845f, -76.948325f, Calendar.getInstance(), Calendar.getInstance(), 10, "DanielCha"));
-        EventList.addEvent(new Event(Event.Category.CLUB, "UAS", "Come help us build a uav.", 38.9903619f, -76.9400295f, Calendar.getInstance(), Calendar.getInstance(), 40, "CarsonMyers"));
-        EventList.addEvent(new Event(Event.Category.SPORT, "water polo", "the water's great!", 38.9882058f, -76.9402019f, Calendar.getInstance(), Calendar.getInstance(), 10, "AndreaSoto"));
     }
 }
