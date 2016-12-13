@@ -115,7 +115,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleA
         mMap.setMyLocationEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
         mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
-        for(Event e: EventList.myEvents){
+        for(Event e: EventList.allEvents){
             mMap.addMarker(new MarkerOptions()
             .position(new LatLng(e.lat,e.lon))
             .title(e.title)

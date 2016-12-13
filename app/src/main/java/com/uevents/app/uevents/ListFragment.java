@@ -44,4 +44,10 @@ public class ListFragment extends Fragment {
         return fragmentView;
     }
 
+    public void update(){
+        Event[] events = EventList.allEvents.toArray(new Event[EventList.allEvents.size()]);
+        adapter = new ListViewAdapter(events,getActivity());
+        recyclerView.setAdapter(adapter);
+    }
+
 }

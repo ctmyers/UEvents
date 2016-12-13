@@ -1,5 +1,6 @@
 package com.uevents.app.uevents;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity
 
     private ImageView mSearchButton;
     public FloatingActionButton myfab;
-
+    public PagerAdapter adapter;
 
 
     @Override
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -88,7 +89,8 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 //Toast.makeText(getActivity(),"Hello!",Toast.LENGTH_SHORT).show();
                 Intent createEvent = new Intent(MainActivity.this, CreateEventActivity.class);
-                startActivity(createEvent);
+                startActivityForResult(createEvent,1);
+
             }
         });
 
@@ -147,17 +149,47 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) {
+            if(resultCode == Activity.RESULT_OK){
+                String title=data.getStringExtra("Title");
+                String description=data.getStringExtra("Description");
+                String attendees = data.getStringExtra("Attendees");
+                float lat = data.getFloatExtra("lat",0f);
+                float lon = data.getFloatExtra("long",0f);
+                Calendar start =(Calendar) data.getSerializableExtra("start");
+                Calendar end =(Calendar) data.getSerializableExtra("end");
+                String cat = data.getStringExtra("Category");
+                Event.Category c=null;
+                switch(cat){
+                    case "Clubs": c = Event.Category.CLUB;
+                        break;
+                    case "Sports": c = Event.Category.SPORT;
+                        break;
+                    case "Social": c = Event.Category.SOCIAL;
+                        break;
+                    case "Study": c = Event.Category.STUDY;
+                        break;
+                }
+                EventList.addEvent(new Event(c,title,description,lat,lon,start,end,Integer.parseInt(attendees),"DanielCha"));
+                adapter.update();
+            }
+
+        }
+    }
 
     private void loadEvents(){
-        EventList.addEvent(new Event(Event.Category.SPORT, "Ultimate Frisbee", "Casual game of ultimate. Weather's nice. Open to all levels.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 12, "JoeShmoe"));
-        EventList.addEvent(new Event(Event.Category.SOCIAL, "Human Jenga", "Human jenga - who's in?", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 15, "RebeccaHe"));
-        EventList.addEvent(new Event(Event.Category.STUDY, "CHEM231 PSet #1", "Houck's orgo problem set. Really hard, stuck on last page.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 10, "DanielCha"));
-        EventList.addEvent(new Event(Event.Category.CLUB, "AMSA GBM #3", "Come listen to our guest speaker from NIH.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 40, "CarsonMyers"));
-        EventList.addEvent(new Event(Event.Category.SPORT, "Soccer", "Who wants to play some soccer? It's a nice day outside.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 10, "AndreaSoto"));
-        EventList.addEvent( new Event(Event.Category.SPORT, "Ultimate Frisbee", "Casual game of ultimate. Weather's nice. Open to all levels.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 12, "JoeShmoe"));
-        EventList.addEvent( new Event(Event.Category.SOCIAL, "Human Jenga", "Human jenga - who's in?", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 15, "RebeccaHe"));
-        EventList.addEvent( new Event(Event.Category.STUDY, "CHEM231 PSet #1", "Houck's orgo problem set. Really hard, stuck on last page.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 10, "DanielCha"));
-        EventList.addEvent( new Event(Event.Category.CLUB, "AMSA GBM #3", "Come listen to our guest speaker from NIH.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 40, "CarsonMyers"));
-        EventList.addEvent(new Event(Event.Category.SPORT, "Soccer", "Who wants to play some soccer? It's a nice day outside.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 10, "AndreaSoto") );
+        EventList.addEvent(new Event(Event.Category.SPORT, "Ultimate Frisbee", "Casual game of ultimate. Weather's nice. Open to all levels.", 38.987951f, -76.937650f, Calendar.getInstance(), Calendar.getInstance(), 12, "JoeShmoe"));
+        EventList.addEvent(new Event(Event.Category.SOCIAL, "Human Jenga", "Human jenga - who's in?", 38.990182f, -76.937247f, Calendar.getInstance(), Calendar.getInstance(), 15, "RebeccaHe"));
+        EventList.addEvent(new Event(Event.Category.STUDY, "CHEM231 PSet #1", "Houck's orgo problem set. Really hard, stuck on last page.", 38.990845f, -76.938325f, Calendar.getInstance(), Calendar.getInstance(), 10, "DanielCha"));
+        EventList.addEvent(new Event(Event.Category.CLUB, "AMSA GBM #3", "Come listen to our guest speaker from NIH.", 38.9903619f, -76.9400295f, Calendar.getInstance(), Calendar.getInstance(), 40, "CarsonMyers"));
+        EventList.addEvent(new Event(Event.Category.SPORT, "Soccer", "Who wants to play some soccer? It's a nice day outside.", 38.9882058f, -76.9402019f, Calendar.getInstance(), Calendar.getInstance(), 10, "AndreaSoto"));
+        EventList.addEvent(new Event(Event.Category.SPORT, "Ultimate Frisbee", "Casual game of ultimate. Weather's nice. Open to all levels.", 38.987951f, -76.937650f, Calendar.getInstance(), Calendar.getInstance(), 12, "JoeShmoe"));
+        EventList.addEvent(new Event(Event.Category.SOCIAL, "Human Jenga", "Human jenga - who's in?", 38.990182f, -76.937247f, Calendar.getInstance(), Calendar.getInstance(), 15, "RebeccaHe"));
+        EventList.addEvent(new Event(Event.Category.STUDY, "CMSC434 IA05", "Let's work on this together", 38.990845f, -76.948325f, Calendar.getInstance(), Calendar.getInstance(), 10, "DanielCha"));
+        EventList.addEvent(new Event(Event.Category.CLUB, "AMSA GBM #3", "Come listen to our guest speaker from NIH.", 38.9903619f, -76.9400295f, Calendar.getInstance(), Calendar.getInstance(), 40, "CarsonMyers"));
+        EventList.addEvent(new Event(Event.Category.SPORT, "Soccer", "Who wants to play some soccer? It's a nice day outside.", 38.9882058f, -76.9402019f, Calendar.getInstance(), Calendar.getInstance(), 10, "AndreaSoto"));
     }
 }

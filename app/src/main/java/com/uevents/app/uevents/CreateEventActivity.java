@@ -112,11 +112,22 @@ public class CreateEventActivity extends AppCompatActivity implements
         returnIntent.putExtra("Title",eventNameEditText.getText().toString());
         EditText eventDes = (EditText)findViewById(R.id.eventDescription);
         returnIntent.putExtra("Description",eventDes.getText().toString());
-        returnIntent.putExtra("Description",eventDes.getText().toString());
+        EditText maxAttend = (EditText)findViewById(R.id.maxAttendees);
+        returnIntent.putExtra("Attendees",maxAttend.getText().toString());
+        returnIntent.putExtra("lat",38.990786f);
+        returnIntent.putExtra("long",-76.9388106f);
+        returnIntent.putExtra("start",calendar);
+        Calendar end = Calendar.getInstance();
+        end.set(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH),
+                calendar.get(Calendar.HOUR)+1,calendar.get(Calendar.MINUTE),calendar.get(Calendar.SECOND));
 
+        returnIntent.putExtra("end",end);
+        Spinner spinner = (Spinner) findViewById(R.id.categorySpinner);
+        returnIntent.putExtra("Category",spinner.getSelectedItem().toString());
         setResult(Activity.RESULT_OK,returnIntent);
-        finish();
         Toast.makeText(this,"Your event was created!",Toast.LENGTH_LONG).show();
+        finish();
+
     }
 
     /*eventNameEditText.setOnFocusChangeListener(new View.OnFocusChangeListener(){
