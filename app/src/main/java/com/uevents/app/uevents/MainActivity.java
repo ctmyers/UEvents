@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity
                     case "Study": c = Event.Category.STUDY;
                         break;
                 }
-                EventList.addEvent(new Event(c,title,description,lat,lon,start,end,Integer.parseInt(attendees),"DanielCha"));
+                EventList.createdEvent(new Event(c,title,description,lat,lon,start,end,Integer.parseInt(attendees),"DanielCha"));
                 adapter.update();
 
             }
