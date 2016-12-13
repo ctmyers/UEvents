@@ -18,13 +18,32 @@ public class EventList {
 
     // when the user attends an event
     public static void attendEvent(Event e){
-        myEvents.add(e);
+        attendingEvents.add(e);
     }
 
     // for user made events
     public static void createdEvent(Event e){
         myEvents.add(e);
         allEvents.add(e);
+    }
+
+    // return even object using title
+    public static Event getEvent(String title){
+        for(Event e:allEvents){
+            if(e.title.equals(title)){
+                return e;
+            }
+        }
+        return null;
+    }
+    
+    public static boolean isAttending(String title){
+        for(Event e:attendingEvents){
+            if(e.title.equals(title)){
+                return true;
+            }
+        }
+        return false;
     }
 
 

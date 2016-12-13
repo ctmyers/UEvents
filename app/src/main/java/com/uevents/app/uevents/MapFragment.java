@@ -101,6 +101,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleA
     @Override
     public void onInfoWindowClick(Marker marker) {
         Toast.makeText(getActivity(),"Going to "+marker.getTitle(),Toast.LENGTH_LONG).show();
+        Event e = EventList.getEvent(marker.getTitle());
+        EventList.attendEvent(e);
+        marker.hideInfoWindow();
     }
 
     @Override
@@ -114,13 +117,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleA
         }
         mMap.setMyLocationEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
-        mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
+        mMap.setOnInfoWindowClickListener(this);
+
         for(Event e: EventList.allEvents){
             mMap.addMarker(new MarkerOptions()
             .position(new LatLng(e.lat,e.lon))
             .title(e.title)
             .snippet(e.currAttendance+"/"+e.maxAttendance));
         }
+        mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
     }
 
     @Override
