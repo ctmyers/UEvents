@@ -36,6 +36,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     }
 
     public void update(){
+        tab1.update();
         tab2.update();
     }
 

@@ -172,6 +172,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleA
 
     }
 
+    public void update(){
+        mMap.clear();
+        for(Event e: EventList.allEvents){
+            mMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(e.lat,e.lon))
+                    .title(e.title)
+                    .snippet(e.currAttendance+"/"+e.maxAttendance));
+        }
+    }
+
     @Override
     public void onLocationChanged(Location location) {
         mCurrentLocation = location;

@@ -175,6 +175,7 @@ public class MainActivity extends AppCompatActivity
                 }
                 EventList.addEvent(new Event(c,title,description,lat,lon,start,end,Integer.parseInt(attendees),"DanielCha"));
                 adapter.update();
+
             }
 
         }
