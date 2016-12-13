@@ -55,7 +55,8 @@
             android:layout_weight="1"
             android:background="@color/colorPrimary"
             android:text="Cancel"
-            android:textColor="@color/common_google_signin_btn_text_dark_default" />
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:onClick="onCancelClick" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -158,14 +159,14 @@
             android:layout_gravity="center"
             android:layout_width="310dp"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
             android:hint="Max # Attendees"
             android:ems="10"
             android:id="@+id/maxAttendees"
             android:paddingLeft="5dp"
             android:paddingTop="10dp"
             android:backgroundTint="@color/line_background"
-            android:textColorHint="@drawable/selector"/>
+            android:textColorHint="@drawable/selector"
+            android:inputType="number" />
 
         <EditText
             android:layout_gravity="center"

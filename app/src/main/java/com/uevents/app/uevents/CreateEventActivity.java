@@ -105,14 +105,27 @@ public class CreateEventActivity extends AppCompatActivity implements
         //update();
         timeTextView.setText(timeTextView.getText() + timeFormat.format(calendar.getTime()));
     }
-
+    public void onCancelClick(View v){
+        Intent returnIntent = new Intent();
+        setResult(Activity.RESULT_CANCELED,returnIntent);
+        finish();
+    }
 
     public void onSaveButtonClick(View v) {
+        EditText eventDes = (EditText)findViewById(R.id.eventDescription);
+        EditText maxAttend = (EditText)findViewById(R.id.maxAttendees);
+        Spinner spinner = (Spinner) findViewById(R.id.categorySpinner);
+        EditText eventLocation = (EditText)findViewById(R.id.addEventLocation);
+        if(eventNameEditText.getText().toString().equals("") ||eventDes.getText().toString().equals("") ||
+                maxAttend.getText().toString().equals("") || dateTextView.getText().equals("") || timeTextView.getText().equals("")
+                || spinner.getSelectedItem().equals("- Select One -") || eventLocation.getText().equals("")){
+            Toast.makeText(this,"Please fill out all fields",Toast.LENGTH_LONG).show();
+            return;
+        }
         Intent returnIntent = new Intent();
         returnIntent.putExtra("Title",eventNameEditText.getText().toString());
-        EditText eventDes = (EditText)findViewById(R.id.eventDescription);
+
         returnIntent.putExtra("Description",eventDes.getText().toString());
-        EditText maxAttend = (EditText)findViewById(R.id.maxAttendees);
         returnIntent.putExtra("Attendees",maxAttend.getText().toString());
         returnIntent.putExtra("lat",38.990786f);
         returnIntent.putExtra("long",-76.9388106f);
@@ -122,7 +135,7 @@ public class CreateEventActivity extends AppCompatActivity implements
                 calendar.get(Calendar.HOUR)+1,calendar.get(Calendar.MINUTE),calendar.get(Calendar.SECOND));
 
         returnIntent.putExtra("end",end);
-        Spinner spinner = (Spinner) findViewById(R.id.categorySpinner);
+
         returnIntent.putExtra("Category",spinner.getSelectedItem().toString());
         setResult(Activity.RESULT_OK,returnIntent);
         Toast.makeText(this,"Your event was created!",Toast.LENGTH_LONG).show();
