@@ -57,7 +57,7 @@ public class MyEventsActivity extends AppCompatActivity {
     public void onResume(){
         super.onResume();
 
-        Event[] events = EventList.attendingEvents.toArray(new Event[EventList.attendingEvents.size()]);
+        Event[] events = EventList.myEvents.toArray(new Event[EventList.myEvents.size()]);
         mAdapter = new ListViewAdapter(events, this);
         mRecyclerView.setAdapter(mAdapter);
 
