@@ -49,9 +49,7 @@ public class AttendingActivity extends AppCompatActivity {
         mAdapter = new ListViewAdapter(events, this);
         mRecyclerView.setAdapter(mAdapter);
 
-        if(EventList.myEvents.size() == 0){
-            Toast.makeText(this,"You're not attending any events =(",Toast.LENGTH_LONG).show();
-        }
+
 
 
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
