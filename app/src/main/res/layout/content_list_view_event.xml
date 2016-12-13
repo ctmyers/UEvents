@@ -22,9 +22,10 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:padding="20dp">
+        android:layout_height="wrap_content"
+        android:layout_weight="0.66"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp">
 
         <ImageView
             android:id="@+id/icon"
@@ -63,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_below="@id/icon" />
+            android:layout_below="@id/icon"/>
 
     </RelativeLayout>
 
@@ -84,16 +85,6 @@
             android:textColor="@color/colorPrimaryDark"
             android:background="@android:color/transparent"
             android:drawableTop="@drawable/check"/>
-
-        <Button
-            android:id="@+id/btn_not_going"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/btn_not_going"
-            android:textColor="@color/colorPrimaryDark"
-            android:background="@android:color/transparent"
-            android:drawableTop="@drawable/close"/>
 
         <Button
             android:id="@+id/btn_share"

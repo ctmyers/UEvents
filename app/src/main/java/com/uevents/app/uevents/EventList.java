@@ -46,6 +46,24 @@ public class EventList {
         return false;
     }
 
+    public static void markAttending(String title){
+        for(Event e:allEvents){
+            if(e.title.equals(title)){
+                attendingEvents.add(e);
+                break;
+            }
+        }
+    }
+
+    public static void cancelAttending(String title){
+        for(Event e:allEvents){
+            if(e.title.equals(title)){
+                attendingEvents.remove(e);
+                break;
+            }
+        }
+    }
+
 
 }
 

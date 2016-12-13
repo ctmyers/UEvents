@@ -7,8 +7,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.List;
 
 public class ListViewEventActivity extends AppCompatActivity {
+
+    Button mGoingButton;
+    Button mShareButton;
+
+    String eventTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +42,10 @@ public class ListViewEventActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
 
+        eventTitle = bundle.getString("title");
+
         TextView title = (TextView) findViewById(R.id.title);
-        title.setText(bundle.getString("title"));
+        title.setText(eventTitle);
 
         ImageView icon = (ImageView) findViewById(R.id.icon);
         TextView subtitle = (TextView) findViewById(R.id.subtitle);
@@ -61,11 +71,33 @@ public class ListViewEventActivity extends AppCompatActivity {
         TextView description = (TextView) findViewById(R.id.description);
         description.setText(bundle.getString("description"));
 
-        Button buttonG = (Button) findViewById(R.id.btn_going);
-        Button buttonNG = (Button) findViewById(R.id.btn_not_going);
-        Button buttonS = (Button) findViewById(R.id.btn_share);
+        mGoingButton = (Button) findViewById(R.id.btn_going);
+        mShareButton = (Button) findViewById(R.id.btn_share);
 
+        if(!EventList.isAttending(bundle.getString("title"))){
+            mGoingButton.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.check, 0, 0);
+            mGoingButton.setText("Going");
+        } else{
+            mGoingButton.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.close, 0, 0);
+            mGoingButton.setText("Cancel");
+        }
 
+        mGoingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(EventList.isAttending(eventTitle)){
+                    mGoingButton.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.check, 0, 0);
+                    mGoingButton.setText("Going");
+                    EventList.cancelAttending(eventTitle);
+                    Toast.makeText(ListViewEventActivity.this,"You've canceled",Toast.LENGTH_LONG).show();
+                } else{
+                    mGoingButton.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.close, 0, 0);
+                    mGoingButton.setText("Cancel");
+                    EventList.markAttending(eventTitle);
+                    Toast.makeText(ListViewEventActivity.this,"You're attending!",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

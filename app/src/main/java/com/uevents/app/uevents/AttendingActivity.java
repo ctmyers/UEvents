@@ -59,6 +59,16 @@ public class AttendingActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+
+        Event[] events = EventList.attendingEvents.toArray(new Event[EventList.attendingEvents.size()]);
+        mAdapter = new ListViewAdapter(events, this);
+        mRecyclerView.setAdapter(mAdapter);
+
+    }
+
 }
 
 
