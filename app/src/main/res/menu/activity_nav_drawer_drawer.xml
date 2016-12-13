@@ -5,7 +5,7 @@
         <item
             android:id="@+id/view_events"
             android:icon="@drawable/event_list"
-            android:title="Event List"/>
+            android:title="Attending Events"/>
         <item
             android:id="@+id/my_events"
             android:icon="@drawable/my_events"

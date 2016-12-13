@@ -46,13 +46,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleA
     private GoogleApiClient mGoogleApiClient;
     private boolean mRequestingLocationUpdates;
     private LocationRequest mLocationRequest;
-    private Event[] prepopulatedEvents = {
-            new Event(Event.Category.SPORT, "Ultimate Frisbee", "Casual game of ultimate. Weather's nice. Open to all levels.", 38.987951f, -76.937650f, Calendar.getInstance(), Calendar.getInstance(), 12, "JoeShmoe"),
-            new Event(Event.Category.SOCIAL, "Human Jenga", "Human jenga - who's in?", 38.990182f, -76.937247f, Calendar.getInstance(), Calendar.getInstance(), 15, "RebeccaHe"),
-            new Event(Event.Category.STUDY, "CHEM231 PSet #1", "Houck's orgo problem set. Really hard, stuck on last page.", 38.990845f, -76.938325f, Calendar.getInstance(), Calendar.getInstance(), 10, "DanielCha"),
-            new Event(Event.Category.CLUB, "AMSA GBM #3", "Come listen to our guest speaker from NIH.", 38.9903619f, -76.9400295f, Calendar.getInstance(), Calendar.getInstance(), 40, "CarsonMyers"),
-            new Event(Event.Category.SPORT, "Soccer", "Who wants to play some soccer? It's a nice day outside.", 38.9882058f, -76.9402019f, Calendar.getInstance(), Calendar.getInstance(), 10, "AndreaSoto"),
-    };
 
 
 
@@ -122,7 +115,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleA
         mMap.setMyLocationEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
         mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
-        for(Event e: prepopulatedEvents){
+        for(Event e: EventList.myEvents){
             mMap.addMarker(new MarkerOptions()
             .position(new LatLng(e.lat,e.lon))
             .title(e.title)
@@ -172,8 +165,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleA
 
     private void initCamera() {
 
-        LatLng latlng = new LatLng(mCurrentLocation.getLatitude(),mCurrentLocation.getLongitude());
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latlng,16f));
+        if(mCurrentLocation != null){
+            LatLng latlng = new LatLng(mCurrentLocation.getLatitude(),mCurrentLocation.getLongitude());
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latlng,16f));
+        }
 
     }
 

@@ -39,20 +39,6 @@ public class SearchActivity extends AppCompatActivity {
     private ImageButton mStudyFilterButton;
     private ImageButton mSocialFilterButton;
 
-
-    private Event[] prepopulatedEvents = {
-            new Event(Event.Category.SPORT, "Ultimate Frisbee", "Casual game of ultimate. Weather's nice. Open to all levels.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 12, "JoeShmoe"),
-            new Event(Event.Category.SOCIAL, "Human Jenga", "Human jenga - who's in?", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 15, "RebeccaHe"),
-            new Event(Event.Category.STUDY, "CHEM231 PSet #1", "Houck's orgo problem set. Really hard, stuck on last page.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 10, "DanielCha"),
-            new Event(Event.Category.CLUB, "AMSA GBM #3", "Come listen to our guest speaker from NIH.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 40, "CarsonMyers"),
-            new Event(Event.Category.SPORT, "Soccer", "Who wants to play some soccer? It's a nice day outside.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 10, "AndreaSoto"),
-            new Event(Event.Category.SPORT, "Ultimate Frisbee", "Casual game of ultimate. Weather's nice. Open to all levels.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 12, "JoeShmoe"),
-            new Event(Event.Category.SOCIAL, "Human Jenga", "Human jenga - who's in?", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 15, "RebeccaHe"),
-            new Event(Event.Category.STUDY, "CHEM231 PSet #1", "Houck's orgo problem set. Really hard, stuck on last page.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 10, "DanielCha"),
-            new Event(Event.Category.CLUB, "AMSA GBM #3", "Come listen to our guest speaker from NIH.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 40, "CarsonMyers"),
-            new Event(Event.Category.SPORT, "Soccer", "Who wants to play some soccer? It's a nice day outside.", 38.990849f, -76.944141f, Calendar.getInstance(), Calendar.getInstance(), 10, "AndreaSoto"),
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +61,8 @@ public class SearchActivity extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.list_recycler_view);
         mRecyclerView.setHasFixedSize(true); // optimization
 
-        mAdapter = new ListViewAdapter(prepopulatedEvents, this);
+        Event[] events = EventList.allEvents.toArray(new Event[EventList.allEvents.size()]);
+        mAdapter = new ListViewAdapter(events, this);
         mRecyclerView.setAdapter(mAdapter);
 
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -177,7 +164,7 @@ public class SearchActivity extends AppCompatActivity {
     private void filter(){
         ArrayList<Event> events = new ArrayList<Event>();
 
-        for(Event e : prepopulatedEvents){
+        for(Event e : EventList.allEvents){
             boolean add = false;
             if(filterClub && e.category.equals(Event.Category.CLUB)){
                 add = true;

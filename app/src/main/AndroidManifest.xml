@@ -34,6 +34,8 @@
         </activity>
 
         <activity android:name=".CreateEventActivity"></activity>
+        <activity android:name=".AttendingActivity"></activity>
+        <activity android:name=".MyEventsActivity"></activity>
     </application>
 
 </manifest>
