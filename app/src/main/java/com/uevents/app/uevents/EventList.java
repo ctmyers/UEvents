@@ -10,6 +10,9 @@ import java.util.Calendar;
 
 public class EventList {
 
+    // static array of all events, prepopulated to be convinent for programming
+    // if this was the real app this would be a whole backend to connect to our server
+    // to get the events (not running in the UI thread of course)
     public static ArrayList<Event> allEvents = new ArrayList<Event>(){{
         add(new Event(Event.Category.SPORT, "Ultimate Frisbee", "Casual game of ultimate. Weather's nice. Open to all levels.", 38.987951f, -76.937650f, Calendar.getInstance(), Calendar.getInstance(), 12, "JoeShmoe"));
         add(new Event(Event.Category.SOCIAL, "Human Jenga", "Human jenga - who's in?", 38.990182f, -76.937247f, Calendar.getInstance(), Calendar.getInstance(), 15, "RebeccaHe"));
@@ -23,9 +26,12 @@ public class EventList {
         add(new Event(Event.Category.SPORT, "water polo", "the water's great!", 38.9882058f, -76.9402019f, Calendar.getInstance(), Calendar.getInstance(), 10, "AndreaSoto"));
 
     }};
+    // static array of events created by the user
     public static ArrayList<Event> myEvents = new ArrayList<Event>();
+    // static array of events the user is attending
     public static ArrayList<Event> attendingEvents = new ArrayList<Event>();
 
+    // adds an event to the allEvents list
     public static void addEvent(Event e){
         allEvents.add(e);
     }
@@ -41,7 +47,7 @@ public class EventList {
         allEvents.add(e);
     }
 
-    // return even object using title
+    // return event object using title
     public static Event getEvent(String title){
         for(Event e:allEvents){
             if(e.title.equals(title)){
@@ -50,7 +56,8 @@ public class EventList {
         }
         return null;
     }
-    
+
+    //returns true if the user is attending the event based on the title
     public static boolean isAttending(String title){
         for(Event e:attendingEvents){
             if(e.title.equals(title)){
@@ -60,6 +67,7 @@ public class EventList {
         return false;
     }
 
+    //marks the given event (based on title) as attending
     public static void markAttending(String title){
         for(Event e:allEvents){
             if(e.title.equals(title)){
@@ -69,6 +77,7 @@ public class EventList {
         }
     }
 
+    //removes the given event (based on title) from the attending list
     public static void cancelAttending(String title){
         for(Event e:allEvents){
             if(e.title.equals(title)){

@@ -20,8 +20,10 @@ public class MyEventsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // sets the content view to the activity_view_events. This is also used in the AttendingActivity class
         setContentView(R.layout.activity_view_events);
 
+        //Sets the toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("My Events");
         setSupportActionBar(toolbar);
@@ -36,23 +38,27 @@ public class MyEventsActivity extends AppCompatActivity {
             }
         });
 
+        //Sets up the recycler view
         mRecyclerView = (RecyclerView) findViewById(R.id.list_recycler_view);
         mRecyclerView.setHasFixedSize(true); // optimization
 
+        //Gets the events created by the user and sets it to the recycler view
         Event[] events = EventList.myEvents.toArray(new Event[EventList.myEvents.size()]);
         mAdapter = new ListViewAdapter(events, this);
         mRecyclerView.setAdapter(mAdapter);
 
+        //if the list is empty, make sure the user knows its empty with a toast message
         if(EventList.myEvents.size() == 0){
             Toast.makeText(this,"You have no events =(",Toast.LENGTH_LONG).show();
         }
 
+        //sets the manager for the recycler view
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
     }
 
-
+    //on resume refresh the list in case it's changed
     @Override
     public void onResume(){
         super.onResume();

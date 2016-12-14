@@ -26,8 +26,10 @@ public class AttendingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // sets the layout for the gui. This layout is also used in MyEventsActivity
         setContentView(R.layout.activity_view_events);
 
+        //Sets the toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Attending Events");
         setSupportActionBar(toolbar);
@@ -42,21 +44,22 @@ public class AttendingActivity extends AppCompatActivity {
             }
         });
 
+        // Sets up the recycler view
         mRecyclerView = (RecyclerView) findViewById(R.id.list_recycler_view);
         mRecyclerView.setHasFixedSize(true); // optimization
 
+        // load the attending events into the view
         Event[] events = EventList.attendingEvents.toArray(new Event[EventList.attendingEvents.size()]);
         mAdapter = new ListViewAdapter(events, this);
         mRecyclerView.setAdapter(mAdapter);
 
-
-
-
+        //sets the adapter for the recycler view
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
     }
 
+    // on resume reload the attending events in case it's changed
     @Override
     public void onResume(){
         super.onResume();

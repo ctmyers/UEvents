@@ -42,8 +42,10 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // sets the content for the gui
         setContentView(R.layout.activity_search);
 
+        //sets up the toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Search");
         setSupportActionBar(toolbar);
@@ -58,9 +60,11 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
+        //set the recyclerView
         mRecyclerView = (RecyclerView) findViewById(R.id.list_recycler_view);
         mRecyclerView.setHasFixedSize(true); // optimization
 
+        //load events into the view
         Event[] events = EventList.allEvents.toArray(new Event[EventList.allEvents.size()]);
         mAdapter = new ListViewAdapter(events, this);
         mRecyclerView.setAdapter(mAdapter);
@@ -70,6 +74,7 @@ public class SearchActivity extends AppCompatActivity {
 
 
         //set up the filtering buttons
+        //changes the boolean variables assosiated with each filter, changes the button color when activated
         mClubFilterButton = (ImageButton) findViewById(R.id.clubFilterButton);
         mClubFilterButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,8 +140,7 @@ public class SearchActivity extends AppCompatActivity {
         });
 
 
-        // set up search text
-
+        // set up search text to filter whenever something is typed
         mSearchText = (EditText) findViewById(R.id.searchText);
         mSearchText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -146,7 +150,7 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                filter();
+                filter();  // runs the filter method each time the text is changed
             }
 
             @Override
@@ -159,13 +163,15 @@ public class SearchActivity extends AppCompatActivity {
     }
 
 
-
-
+    // gets the text in the search bar, searches all events for matches and sets those events to
+    // be the only ones in the view
     private void filter(){
         ArrayList<Event> events = new ArrayList<Event>();
 
         for(Event e : EventList.allEvents){
             boolean add = false;
+
+            // make sure the event is in the correct category according to the filters
             if(filterClub && e.category.equals(Event.Category.CLUB)){
                 add = true;
             }
@@ -179,11 +185,13 @@ public class SearchActivity extends AppCompatActivity {
                 add = true;
             }
 
+            // if the event categories match the filters and the event title or description contains the search text then add it to the list
             if(add && (e.description.toLowerCase().contains(mSearchText.getText()) || e.title.toLowerCase().contains(mSearchText.getText()))){
                 events.add(e);
             }
         }
 
+        // turn the list into an array and set it to the adapter to be displayed
         Event[] eventArr = new Event[events.size()];
         eventArr = events.toArray(eventArr);
 
