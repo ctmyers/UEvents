@@ -4,7 +4,7 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="action_settings">Settings</string>
 
-    <!-- ListViewEvent buttons -->
+    <!-- ListViewEvent Buttons -->
     <string name="btn_going">GOING</string>
     <string name="btn_not_going">NOT GOING</string>
     <string name="btn_share">SHARE</string>
@@ -13,6 +13,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <!-- Create Event Form: Categories -->
     <string-array name="categories_array">
         <item>- Select One -</item>
         <item>Clubs</item>
