@@ -20,6 +20,7 @@ import android.widget.ImageView;
 
 import java.util.Calendar;
 
+//Main activity for managing tabs and creating events
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity
     public FloatingActionButton myfab;
     public PagerAdapter adapter;
 
-
+    //On create method for initializing the drawer, toolbar, and tabbed layout
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,16 +37,18 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+        //Setup the navigation drawer to pull out from the side
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+        //Setup menu items for navigation drawer
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-//        // Attach an onClickListener to the imageView to start the search activity
+        // Attach an onClickListener to the imageView to start the search activity
         mSearchButton = (ImageView) findViewById(R.id.searchButton);
         mSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,16 +58,19 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        //Initialize tablayout for map and list view
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Nearby").setIcon(R.drawable.map));
         tabLayout.addTab(tabLayout.newTab().setText("Happening Now").setIcon(R.drawable.list));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
+        //Setup Pager adapter to listen for the change of the different tabs
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            //Display selected tab
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
@@ -82,10 +88,10 @@ public class MainActivity extends AppCompatActivity
         });
 
         myfab = (FloatingActionButton) findViewById(R.id.fab);
+        //On click listener for creating an event by clicking the fab
         myfab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(getActivity(),"Hello!",Toast.LENGTH_SHORT).show();
                 Intent createEvent = new Intent(MainActivity.this, CreateEventActivity.class);
                 startActivityForResult(createEvent,1);
 
