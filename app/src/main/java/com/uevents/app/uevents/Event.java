@@ -7,19 +7,24 @@ import java.util.Calendar;
  */
 public class Event {
 
-    // fields
+    // general variables
     Category category;
     String title;
     String description;
+
+    // location variables
     float lat;
     float lon;
 
+    // time variables
     Calendar startTime;
     Calendar endTime;
 
+    // attendance variables
     int maxAttendance;
     int currAttendance;
 
+    // username
     String creator;
 
 
@@ -27,6 +32,7 @@ public class Event {
         SPORT, STUDY, SOCIAL, CLUB
     }
 
+    // Standard constructor that sets the class variables
     public Event(Category category, String title, String description, float lat, float lon,
                  Calendar startTime, Calendar endTime, int maxAttendance, String creator) {
         this.category = category;
@@ -37,13 +43,14 @@ public class Event {
         this.startTime = startTime;
         this.endTime = endTime;
         this.maxAttendance = maxAttendance;
-        this.currAttendance = 1; // Assumption: the event creator is attending
+        this.currAttendance = 1; // Assumption: the event creator is attending his own event
         this.creator = creator;
     }
 
     /**
      * This method increments the attendance count if possible. If increment is successful, method
-     * returns true, otherwise returns false.
+     * returns true, otherwise returns false. Increment can only be successful if the attendance
+     * is less than the maximum attendance.
      * @return
      */
     public boolean incrementAttendance() {

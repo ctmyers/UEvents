@@ -20,8 +20,10 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
     private Event[] dataset;
     private Context context;
 
+    /**
+     * This ViewHolder class stores each Event item in a CardView for easy use.
+     */
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        // Each event item stored in a card
         public CardView cardView;
         public ViewHolder(CardView cardView) {
             super(cardView);
@@ -70,15 +72,16 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
 
         title.setText(event.title);
         attendance.setText(event.currAttendance + "/" + event.maxAttendance + " attending");
-        switch(event.category) {
+        switch(event.category) { // sets the corresponding icon
             case SPORT: icon.setImageResource(R.mipmap.ic_sport); break;
             case STUDY: icon.setImageResource(R.mipmap.ic_study); break;
             case SOCIAL: icon.setImageResource(R.mipmap.ic_social); break;
             case CLUB: icon.setImageResource(R.mipmap.ic_club); break;
         }
-        // TODO: Time - Assume within boundary? Start/End v. how much longer?
-        // TODO: Location - Find distance from current location using Google Maps API?
 
+        /* When a card is clicked, the information from that Event is put into a bundle
+         * and passed via the Intent to the next activity (ListViewEventActivity).
+         */
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

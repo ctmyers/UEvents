@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Material Design color scheme -->
     <color name="colorPrimary">#2196f3</color>
     <color name="colorPrimaryDark">#1976D2</color>
     <color name="colorPrimaryLight">#BBDEFB</color>
@@ -9,11 +11,13 @@
     <color name="colorTextSecondary">#757575</color>
     <color name="colorDivider">#BDBDBD</color>
 
+    <!-- Icon colors -->
     <color name="colorIconSport">#E06666</color>
     <color name="colorIconClub">#F6B26B</color>
     <color name="colorIconSocial">#FFD966</color>
     <color name="colorIconStudy">#93C47D</color>
 
+    <!-- Search filters -->
     <color name="colorImageFilterBackgroundUnseclected">#03000000</color>
     <color name="colorImageFilterBackgroundSeclected">#d1d1d1</color>
 

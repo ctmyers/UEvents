@@ -9,8 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.List;
-
+// A more detailed view of an event when it is selected from the list
 public class ListViewEventActivity extends AppCompatActivity {
 
     Button mGoingButton;
@@ -27,9 +26,9 @@ public class ListViewEventActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         // Back button on toolbar
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,16 +36,15 @@ public class ListViewEventActivity extends AppCompatActivity {
             }
         });
 
-
-        // --- Retrieve Event information ---
-
+        // Retrieve Event information
         Bundle bundle = getIntent().getExtras();
 
+        // Set up the title
         eventTitle = bundle.getString("title");
-
         TextView title = (TextView) findViewById(R.id.title);
         title.setText(eventTitle);
 
+        // Set up the icon
         ImageView icon = (ImageView) findViewById(R.id.icon);
         TextView subtitle = (TextView) findViewById(R.id.subtitle);
         switch(bundle.getString("category")) {
@@ -68,9 +66,11 @@ public class ListViewEventActivity extends AppCompatActivity {
                 break;
         }
 
+        // Set up the description
         TextView description = (TextView) findViewById(R.id.description);
         description.setText(bundle.getString("description"));
 
+        // Set up the Going/Cancel button
         mGoingButton = (Button) findViewById(R.id.btn_going);
         mShareButton = (Button) findViewById(R.id.btn_share);
 
@@ -82,6 +82,9 @@ public class ListViewEventActivity extends AppCompatActivity {
             mGoingButton.setText("Cancel");
         }
 
+        /* When the user selects "Going", this listener updates the UI and the back end list of
+         * events that the user is attending.
+         */
         mGoingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,15 +102,6 @@ public class ListViewEventActivity extends AppCompatActivity {
             }
         });
 
-
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action -- ", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
     }
 
 
